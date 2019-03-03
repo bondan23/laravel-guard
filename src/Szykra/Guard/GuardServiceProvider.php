@@ -17,11 +17,11 @@ class GuardServiceProvider extends ServiceProvider {
             return $app['auth']->user();
         });
 
-        $this->app->bindShared('Szykra\Guard\Factories\RoleFactory', function() {
+        $this->app->singleton('Szykra\Guard\Factories\RoleFactory', function() {
             return new RoleFactory(config('guard.model.role'));
         });
 
-        $this->app->bindShared('Szykra\Guard\Factories\PermissionFactory', function() {
+        $this->app->singleton('Szykra\Guard\Factories\PermissionFactory', function() {
             return new PermissionFactory(config('guard.model.permission'));
         });
 
