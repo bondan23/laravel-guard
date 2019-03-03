@@ -3,10 +3,9 @@
 namespace Szykra\Guard\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Routing\Middleware;
 use Szykra\Guard\Exceptions\InsufficientPermissionsException;
 
-class ProtectRoutes implements Middleware
+class ProtectRoutes
 {
 
     /**
