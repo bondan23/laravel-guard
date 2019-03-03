@@ -29,7 +29,7 @@ class CreatePermissionConsole extends Command {
      * @param PermissionFactory $factory
      * @return mixed
      */
-    public function fire(PermissionFactory $factory)
+    public function handle(PermissionFactory $factory)
     {
         $tag = $this->argument('tag');
         $name = $this->argument('name');
