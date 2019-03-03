@@ -63,7 +63,7 @@ Schema::update('users', function(Blueprint $table)
 Guard provides new *contract* - **Permissible**. It requires two methods:
 
 - is($role)
-- can($action)
+- able($action)
 
 Don't worry! Guard has trait which implements these methods. The only thing you have to do is use it and add new relationship to `roles`.
 
@@ -267,7 +267,7 @@ $router->group(['needs' => ['USERS.READ']], function() use ($router)
 ## Checking permissions
 You have two new methods in user model to checking permissions.
 
-- `$user->can($action)`
+- `$user->able($action)`
 - `$user->is($role)`
 
 To get user instance use Laravel `Auth` facade or inject instance of **Permissible** into your class.
@@ -285,7 +285,7 @@ class UsersController extends Controller {
 
     public function update(Request $request, $id)
     {
-        if( ! $this->user->can('USERS.UPDATE')) {
+        if( ! $this->user->able('USERS.UPDATE')) {
             // redirect, exception, flash message, etc.
         }
 
@@ -303,7 +303,7 @@ class UsersController extends Controller {
 
     public function destroy(Permissible $user, $id)
     {
-        if( ! $user->can('USERS.DELETE')) {
+        if( ! $user->able('USERS.DELETE')) {
             // redirect, exception, flash message, etc.
         }
 
@@ -321,7 +321,7 @@ It's very useful in views, when you have to render a part of view only for users
 <section class="actions">
     <a href="{{ route('users.show', $user->id) }}">Show</a>
 
-    @if(Auth::user()->can('USERS.EDIT'))
+    @if(Auth::user()->able('USERS.EDIT'))
         | <a href="{{ route('users.edit', $user->id) }}">Edit</a>
     @endif
 </section>
@@ -337,7 +337,7 @@ class CreateUserRequest extends Request {
 
 	public function authorize(Permissible $user)
 	{
-		return $user->can("USERS.CREATE");
+		return $user->able("USERS.CREATE");
 	}
 
 	public function rules()

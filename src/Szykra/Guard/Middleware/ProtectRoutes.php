@@ -29,7 +29,7 @@ class ProtectRoutes implements Middleware
         $user = $this->resolveUser();
 
         foreach ($needs as $tag) {
-            if (!$user->can($tag)) {
+            if (!$user->able($tag)) {
                 throw new InsufficientPermissionsException("You don't have sufficient permissions to access {$route->getName()}. This route needs " . implode(', ', $needs) . ".");
             }
         }

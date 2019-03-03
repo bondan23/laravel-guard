@@ -31,7 +31,7 @@ trait Permissions
      * @param $permission
      * @return bool
      */
-    public function can($permission)
+    public function able($permission)
     {
         $this->checkIfRelationToRoleExist();
 

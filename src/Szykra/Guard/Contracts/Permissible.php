@@ -5,6 +5,6 @@ interface Permissible
 
     public function is($role);
 
-    public function can($action);
+    public function able($action);
 
 }
