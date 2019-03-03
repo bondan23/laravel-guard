@@ -27,7 +27,7 @@ class CreateRoleConsole extends Command {
      * @param RoleFactory $factory
      * @return mixed
      */
-    public function fire(RoleFactory $factory)
+    public function handle(RoleFactory $factory)
     {
         $tag = $this->argument('tag');
         $name = $this->argument('name');
