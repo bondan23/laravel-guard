@@ -26,7 +26,7 @@ class LinkPermissionWithRoleConsole extends Command {
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $role = $this->argument('role');
         $permission = $this->argument('permission');
